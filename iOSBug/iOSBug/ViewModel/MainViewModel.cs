@@ -1,4 +1,5 @@
 ﻿using MvvmHelpers;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace iOSBug.ViewModel
@@ -30,6 +31,7 @@ namespace iOSBug.ViewModel
         public MainViewModel()
         {
             IsVisible = false;
+            Results = new ObservableRangeCollection<TestObject>();
         }
 
         public async Task InitializeAsync()
@@ -40,12 +42,17 @@ namespace iOSBug.ViewModel
 
         protected async Task SearchAsync()
         {
-            Results = new ObservableRangeCollection<TestObject>(await GetData());
+            //-- Below doesn't work, uncomment the GetData that returns ObservablerangeCollection
+            //Results = new ObservableRangeCollection<TestObject>(await GetData());
+
+            // This does work, comment out out GetData that returns IEnumerable to test the above scenario.
+            Results.AddRange(await GetData());
+
             TestText = "Helo World";
             IsVisible = true;
         }
 
-        private async Task<ObservableRangeCollection<TestObject>> GetData()
+        private async Task<IEnumerable<TestObject>> GetData()
         {
 
             return await Task.Run(() =>
@@ -68,6 +75,30 @@ namespace iOSBug.ViewModel
             });
 
         }
+
+        //private async Task<ObservableRangeCollection<TestObject>> GetData()
+        //{
+
+        //    return await Task.Run(() =>
+        //    {
+        //        return new ObservableRangeCollection<TestObject>()
+        //        {
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //            {new TestObject(){ Name = "Test One" } },
+        //        };
+        //    });
+
+        //}
 
     }
 
