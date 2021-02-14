@@ -43,42 +43,42 @@ namespace iOSBug.ViewModel
         protected async Task SearchAsync()
         {
             // Scenario one
-            // Below doesn't work, uncomment the GetData that returns ObservablerangeCollection
-             Results = new ObservableRangeCollection<TestObject>(await GetData());
+            // Below doesn't work
+             Results = new ObservableRangeCollection<TestObject>(await GetData1());
 
             // Scenario two
-            // This does work, comment out out GetData that returns IEnumerable to test the above scenario.
+            // This does work, comment out out the above call that sets Results and uncomment below
             //Results.AddRange(await GetData());
 
             TestText = "Helo World";
             IsVisible = true;
         }
 
-        //private async Task<IEnumerable<TestObject>> GetData()
-        //{
+        private async Task<ObservableRangeCollection<TestObject>> GetData1()
+        {
 
-        //    return await Task.Run(() =>
-        //    {
-        //        return new ObservableRangeCollection<TestObject>()
-        //        {
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //            {new TestObject(){ Name = "Test One" } },
-        //        };
-        //    });
+            return await Task.Run(() =>
+            {
+                return new ObservableRangeCollection<TestObject>()
+                {
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                    {new TestObject(){ Name = "Test One" } },
+                };
+            });
 
-        //}
+        }
 
-        private async Task<ObservableRangeCollection<TestObject>> GetData()
+        private async Task<IEnumerable<TestObject>> GetData2()
         {
 
             return await Task.Run(() =>
