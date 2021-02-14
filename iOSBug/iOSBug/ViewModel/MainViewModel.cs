@@ -44,7 +44,7 @@ namespace iOSBug.ViewModel
         {
             // Scenario one
             // Below doesn't work
-             Results = new ObservableRangeCollection<TestObject>(await GetData1());
+            Results = new ObservableRangeCollection<TestObject>(await GetData1());
 
             // Scenario two
             // This does work, comment out out the above call that sets Results and uncomment below
