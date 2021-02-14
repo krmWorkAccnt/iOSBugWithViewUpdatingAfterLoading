@@ -6,16 +6,25 @@
              x:Class="iOSBug.MainPage">
 
     <StackLayout>
-
+               
         <StackLayout IsVisible="{Binding IsVisible}">
 
-            <CollectionView ItemsSource="{Binding Results}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Name}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <StackLayout>
+
+                <Label Text="{Binding TestText}"/>
+
+                <CollectionView ItemsSource="{Binding Results}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </StackLayout>
+
+            
 
 
         </StackLayout>

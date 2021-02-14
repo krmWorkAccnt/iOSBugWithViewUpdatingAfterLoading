@@ -7,6 +7,13 @@ namespace iOSBug.ViewModel
     {
         bool isVisible;
         ObservableRangeCollection<TestObject> results;
+        string testText;
+
+        public string TestText
+        {
+            get => testText;
+            set => SetProperty(ref testText, value);
+        }
 
         public ObservableRangeCollection<TestObject> Results
         {
@@ -34,6 +41,7 @@ namespace iOSBug.ViewModel
         protected async Task SearchAsync()
         {
             Results = new ObservableRangeCollection<TestObject>(await GetData());
+            TestText = "Helo World";
             IsVisible = true;
         }
 
