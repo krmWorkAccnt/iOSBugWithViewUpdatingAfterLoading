@@ -48,7 +48,7 @@ namespace iOSBug.ViewModel
 
             // Scenario two
             // This does work, comment out out the above call that sets Results and uncomment below
-            //Results.AddRange(await GetData());
+            //Results.AddRange(await GetData2());
 
             TestText = "Helo World";
             IsVisible = true;
