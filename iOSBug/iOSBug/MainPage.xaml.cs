@@ -7,7 +7,6 @@ namespace iOSBug
     {
         public MainPage()
         {
-            this.BindingContext = new MainViewModel();
             InitializeComponent();
         }
     }

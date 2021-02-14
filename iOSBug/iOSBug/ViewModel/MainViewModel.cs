@@ -1,11 +1,5 @@
 ﻿using MvvmHelpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace iOSBug.ViewModel
 {
@@ -29,10 +23,11 @@ namespace iOSBug.ViewModel
         public MainViewModel()
         {
             IsVisible = false;
-            Task.Run(async () =>
-            {
-                await SearchAsync();
-            });
+        }
+
+        public async Task InitializeAsync()
+        {
+            await SearchAsync();
 
         }
 
